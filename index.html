@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+   ONAZI'S IMPORT — Official Website
+   Wholesale & Retail · FCT Abuja, Nigeria · 0816 404 3196
+   © 2026 Onazi's Import. All rights reserved.
+
+   Founder & Director : Prince Onazi
+   Co-Founder         : Onazi Treasure
+   Developer          : OJ
+   Co-Designer        : bigsmoke001
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONAZI'S IMPORT — Wholesale & Retail, Abuja</title>
+<meta name="description" content="ONAZI'S IMPORT. Home accessories, home appliances, kitchen wares, men's wear, ladies' wear, bags and gadgets. Wholesale and retail. Back of Sharia Court, Block Industry, FCT Abuja. 0816 404 3196.">
+
+<!-- Favicon (inline SVG monogram) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='72' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='66' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="og-image.png">
+
+<!-- Open Graph / link preview (WhatsApp, Facebook, Instagram) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Onazi's Import">
+<meta property="og:title" content="ONAZI'S IMPORT — Wholesale & Retail, FCT Abuja">
+<meta property="og:description" content="Home accessories, appliances, kitchen wares, men's & ladies' wear, bags and gadgets. Wholesale and retail. Call 0816 404 3196.">
+<meta property="og:url" content="https://onazioj179-lab.github.io/OnaziImport/">
+<meta property="og:image" content="https://onazioj179-lab.github.io/OnaziImport/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ONAZI'S IMPORT — Wholesale & Retail, FCT Abuja">
+<meta name="twitter:description" content="Home accessories, appliances, kitchen wares, fashion, bags and gadgets. Wholesale and retail. Call 0816 404 3196.">
+<meta name="twitter:image" content="https://onazioj179-lab.github.io/OnaziImport/og-image.png">
+
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --off:#f5f5f4;
+  --grey:#6e6e73;
+  --line:#e5e5e5;
+  --line-dark:#1f1f1f;
+  --r-sm:10px;
+  --r-md:16px;
+  --r-lg:22px;
+  --r-pill:999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:'Archivo',sans-serif}
+a{color:inherit}
+::selection{background:var(--black);color:var(--white)}
+img{max-width:100%}
+
+/* ============ NAV ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.86);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1440px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px}
+.brand{font-family:'Archivo';font-weight:900;font-size:1.05rem;letter-spacing:.18em;text-decoration:none;text-transform:uppercase}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--black);opacity:.6;transition:opacity .25s}
+.nav-links a:hover{opacity:1}
+.nav-call{text-decoration:none;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--black);padding:11px 24px;transition:.3s;white-space:nowrap;border-radius:var(--r-pill)}
+.nav-call:hover{background:var(--black);color:var(--white);transform:translateY(-1px)}
+.burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:6px;padding:8px}
+.burger span{width:26px;height:1.5px;background:var(--black);transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+@media(max-width:900px){
+  .nav-inner{padding:0 20px}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:var(--white);flex-direction:column;gap:0;padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease;border-bottom:0 solid var(--line)}
+  .nav-links.open{max-height:480px;border-bottom-width:1px}
+  .nav-links li{border-top:1px solid var(--line)}
+  .nav-links a{display:block;padding:20px;opacity:1;font-size:.8rem}
+  .nav-call{display:none}
+  .burger{display:flex}
+}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:140px 40px 80px;max-width:1440px;margin:auto}
+.hero .kicker{font-size:.72rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--grey);margin-bottom:28px}
+.hero h1{font-weight:900;font-size:clamp(3rem,11vw,9.5rem);line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--black)}
+.hero-sub{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:56px;flex-wrap:wrap}
+.hero-sub p{max-width:480px;color:var(--grey);font-size:1rem}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-family:'Archivo';font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:18px 40px;transition:transform .3s,background .3s,color .3s,box-shadow .3s;border:1px solid var(--black);border-radius:var(--r-pill)}
+.btn-solid{background:var(--black);color:var(--white)}
+.btn-solid:hover{background:var(--white);color:var(--black);transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.14)}
+.btn-line{background:transparent;color:var(--black)}
+.btn-line:hover{background:var(--black);color:var(--white);transform:translateY(-2px)}
+@media(max-width:900px){.hero{padding:120px 20px 60px}}
+
+/* ============ MARQUEE ============ */
+.marquee{border-top:1px solid var(--black);border-bottom:1px solid var(--black);overflow:hidden;padding:18px 0;background:var(--white)}
+.marquee-track{display:flex;gap:64px;white-space:nowrap;animation:scroll 28s linear infinite;width:max-content}
+.marquee-track span{font-family:'Archivo';font-weight:800;font-size:.82rem;letter-spacing:.28em;text-transform:uppercase}
+.marquee-track i{font-style:normal;color:var(--grey)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ============ IMPORT JOURNEY ============ */
+.flightpath{width:100%;height:auto;display:block;overflow:visible;margin-top:8px}
+.fp-line{fill:none;stroke:#d6d6d6;stroke-width:2;stroke-dasharray:1 10;stroke-linecap:round}
+.fp-dot{fill:#0a0a0a}
+.fp-ring{fill:none;stroke:#0a0a0a;stroke-width:2}
+.fp-label{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;letter-spacing:2px;fill:#0a0a0a}
+.fp-sub{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;fill:#8a8a8a;letter-spacing:1px}
+.plane path{fill:#0a0a0a}
+.stops{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin-top:40px}
+.stop{padding:42px 34px;border-right:1px solid var(--line);transition:background .35s,color .35s}
+.stop:last-child{border-right:0}
+.stop:hover{background:var(--black);color:#fff}
+.stop .s-step{font-family:'Archivo';font-weight:600;font-size:.7rem;letter-spacing:.25em;color:var(--grey);text-transform:uppercase}
+.stop svg.s-ic{width:40px;height:40px;stroke:currentColor;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;margin:24px 0 18px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.stop:hover svg.s-ic{transform:translateY(-4px) scale(1.06)}
+.stop h3{font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.stop p{font-size:.86rem;color:var(--grey);transition:color .35s}
+.stop:hover p{color:#b8b8b8}
+@media(max-width:760px){
+  .stops{grid-template-columns:1fr}
+  .stop{border-right:0;border-bottom:1px solid var(--line)}
+  .stop:last-child{border-bottom:0}
+  .fp-label{font-size:26px}
+  .fp-sub{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){.plane{display:none}}
+
+/* ============ SECTION SHELL ============ */
+section{padding:120px 40px;max-width:1440px;margin:auto}
+@media(max-width:900px){section{padding:80px 20px}}
+.sec-label{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--black);padding-bottom:20px;margin-bottom:64px;gap:20px;flex-wrap:wrap}
+.sec-label h2{font-weight:900;font-size:clamp(1.8rem,4.5vw,3.4rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.sec-label .idx{font-family:'Archivo';font-weight:600;font-size:.74rem;letter-spacing:.3em;color:var(--grey);text-transform:uppercase}
+
+/* ============ CATEGORIES ============ */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+@media(max-width:1100px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cat-grid{grid-template-columns:1fr}}
+.cat{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:48px 32px 40px;position:relative;transition:background .35s,color .35s;min-height:300px;display:flex;flex-direction:column}
+.cat:hover{background:var(--black);color:var(--white)}
+.cat svg:not(.arrow){transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.cat:hover svg:not(.arrow){transform:translateY(-4px) scale(1.06)}
+.cat .num{font-family:'Archivo';font-weight:600;font-size:.7rem;letter-spacing:.25em;color:var(--grey);margin-bottom:auto}
+.cat svg{width:34px;height:34px;stroke:currentColor;stroke-width:1.4;fill:none;margin:28px 0 20px;stroke-linecap:round;stroke-linejoin:round}
+.cat h3{font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.cat p{font-size:.84rem;color:var(--grey);transition:color .35s}
+.cat:hover p{color:#b8b8b8}
+.cat .arrow{position:absolute;top:44px;right:32px;width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none;opacity:0;transform:translate(-8px,8px);transition:.35s;margin:0}
+.cat:hover .arrow{opacity:1;transform:none}
+
+/* ============ WHY — BLACK SECTION ============ */
+.dark{background:var(--black);color:var(--white)}
+.dark-inner{max-width:1440px;margin:auto;padding:120px 40px}
+@media(max-width:900px){.dark-inner{padding:80px 20px}}
+.dark .sec-label{border-color:var(--white)}
+.dark .sec-label .idx{color:#8a8a8a}
+.why-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line-dark);border-radius:var(--r-lg);overflow:hidden}
+.why-item{transition:background .35s}
+.why-item:hover{background:#141414}
+@media(max-width:1000px){.why-list{grid-template-columns:1fr}}
+.why-item{padding:48px 36px;border-bottom:1px solid var(--line-dark)}
+.why-item:nth-child(3n+2){border-left:1px solid var(--line-dark);border-right:1px solid var(--line-dark)}
+@media(max-width:1000px){.why-item:nth-child(3n+2){border-left:0;border-right:0}}
+.why-item .w-num{font-family:'Archivo';font-weight:900;font-size:2.6rem;line-height:1;color:transparent;-webkit-text-stroke:1px #555;margin-bottom:24px}
+.why-item h3{font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.why-item p{font-size:.88rem;color:#9a9a9a}
+
+/* ============ STATEMENT ============ */
+.statement{text-align:left}
+.statement p{font-family:'Archivo';font-weight:800;font-size:clamp(1.6rem,4.4vw,3.6rem);line-height:1.15;text-transform:uppercase;letter-spacing:-.01em;max-width:1100px}
+.statement p span{color:transparent;-webkit-text-stroke:1.2px var(--black)}
+
+/* ============ WHOLESALE ============ */
+.ws{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){.ws{grid-template-columns:1fr}}
+.ws h2{font-weight:900;font-size:clamp(2rem,5vw,3.8rem);text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;margin-bottom:24px}
+.ws p{color:var(--grey);max-width:480px;margin-bottom:36px}
+.ws-points{list-style:none;border-top:1px solid var(--line)}
+.ws-points li{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);font-family:'Archivo';font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase}
+.ws-points li span{color:var(--grey);font-family:'Inter';font-weight:500;font-size:.78rem;letter-spacing:0;text-transform:none}
+
+/* ============ CONTACT — BLACK ============ */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-dark);border-radius:var(--r-lg);overflow:hidden}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.c-cell{padding:48px 36px;border-bottom:1px solid var(--line-dark)}
+.c-cell:nth-child(2){border-left:1px solid var(--line-dark);border-right:1px solid var(--line-dark)}
+@media(max-width:900px){.c-cell:nth-child(2){border-left:0;border-right:0}}
+.c-cell .c-label{font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#8a8a8a;margin-bottom:18px}
+.c-cell .c-value{font-family:'Archivo';font-weight:800;font-size:1.3rem;line-height:1.3;text-transform:uppercase}
+.c-cell .c-value a{text-decoration:none;border-bottom:1px solid var(--white);transition:.25s}
+.c-cell .c-value a:hover{color:#b8b8b8;border-color:#b8b8b8}
+.c-cell .c-sub{font-size:.84rem;color:#9a9a9a;margin-top:10px}
+.big-call{margin-top:80px;text-align:center}
+.big-call a{font-family:'Archivo';font-weight:900;font-size:clamp(2.2rem,8vw,6.5rem);letter-spacing:.02em;text-decoration:none;line-height:1;display:inline-block;border-bottom:3px solid var(--white);padding-bottom:10px;transition:.3s}
+.big-call a:hover{color:transparent;-webkit-text-stroke:1.5px var(--white)}
+.ws-points{border-radius:var(--r-md);overflow:hidden}
+.big-call .hint{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#8a8a8a;margin-top:22px}
+
+/* ============ FOOTER ============ */
+footer{background:var(--black);color:var(--white);border-top:1px solid var(--line-dark)}
+.f-inner{max-width:1440px;margin:auto;padding:80px 40px 0}
+@media(max-width:900px){.f-inner{padding:60px 20px 0}}
+.f-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:48px;padding-bottom:64px}
+@media(max-width:1000px){.f-top{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-top{grid-template-columns:1fr}}
+.f-brand .brand{font-size:1.2rem;color:var(--white)}
+.f-brand p{color:#9a9a9a;font-size:.86rem;margin-top:18px;max-width:300px}
+.f-col h4{font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#8a8a8a;margin-bottom:22px}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:13px}
+.f-col a{color:var(--white);text-decoration:none;font-size:.88rem;opacity:.85;transition:.25s}
+.f-col a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.f-col .addr{color:#9a9a9a;font-size:.88rem;line-height:1.7}
+.f-wordmark{border-top:1px solid var(--line-dark);padding:48px 0 32px;overflow:hidden}
+.f-wordmark span{display:block;font-family:'Archivo';font-weight:900;font-size:clamp(2.4rem,9.5vw,9rem);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px #3a3a3a;white-space:nowrap;text-align:center}
+.f-team{border-top:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-dark);border-radius:var(--r-md);overflow:hidden;margin-bottom:0}
+@media(max-width:900px){.f-team{grid-template-columns:repeat(2,1fr)}}
+.team-cell{background:var(--black);padding:26px 28px;text-align:center;transition:background .3s}
+.team-cell:hover{background:#141414}
+.team-cell .t-role{display:block;font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#8a8a8a;margin-bottom:9px}
+.team-cell .t-name{display:block;font-family:'Archivo';font-weight:800;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase}
+@media(max-width:680px){.f-team{grid-template-columns:1fr}}
+.f-bottom{border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:26px 0 32px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#8a8a8a;margin-top:28px}
+.f-bottom a{color:#8a8a8a;text-decoration:none}
+.f-bottom a:hover{color:var(--white)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ NAV SCROLL STATE ============ */
+nav.scrolled{box-shadow:0 6px 30px rgba(0,0,0,.08)}
+
+/* ============ MOBILE POLISH ============ */
+@media(max-width:600px){
+  .hero{padding:108px 18px 56px;min-height:auto}
+  .hero h1{font-size:clamp(2.6rem,15vw,4rem)}
+  .hero-sub{margin-top:40px;gap:28px}
+  .hero-cta{width:100%}
+  .hero-cta .btn{flex:1;text-align:center;padding:16px 20px}
+  section{padding:64px 18px}
+  .dark-inner{padding:64px 18px}
+  .sec-label{margin-bottom:40px;padding-bottom:16px}
+  .sec-label .idx{font-size:.64rem}
+  .cat{padding:34px 24px;min-height:240px}
+  .why-item{padding:36px 26px}
+  .c-cell{padding:36px 26px}
+  .ws{gap:40px}
+  .big-call{margin-top:56px}
+  .big-call a{border-bottom-width:2px}
+  .f-inner{padding:48px 18px 0}
+  .f-top{gap:36px;padding-bottom:48px}
+}
+@media(hover:none){
+  .btn-solid:hover{box-shadow:none;transform:none}
+  .cat:hover svg:not(.arrow){transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">ONAZI'S&nbsp;IMPORT</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#journey">Import</a></li>
+      <li><a href="#shop">Collections</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#wholesale">Wholesale</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-call" href="tel:08164043196">0816 404 3196</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <p class="kicker reveal">Wholesale &amp; Retail — FCT Abuja</p>
+  <h1 class="reveal">Onazi's<br>Import<br><span class="outline">Everything.</span></h1>
+  <div class="hero-sub reveal">
+    <p>Home accessories. Home appliances. Kitchen wares. Men's wear. Ladies' wear. Bags. Gadgets. Quality imports, one address, wholesale and retail.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="tel:08164043196">Call to Order</a>
+      <a class="btn btn-line" href="#shop">View Collections</a>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mq">
+    <span>Imported Worldwide <i>—</i> Home Accessories <i>—</i> Home Appliances <i>—</i> Kitchen Wares <i>—</i> Men's Wear <i>—</i> Ladies' Wear <i>—</i> Bags <i>—</i> Gadgets <i>—</i> Wholesale &amp; Retail <i>—</i>&nbsp;</span>
+  </div>
+</div>
+
+<!-- IMPORT JOURNEY -->
+<section id="journey">
+  <div class="sec-label reveal">
+    <h2>From the World<br>to Abuja</h2>
+    <span class="idx">— Imported With Intent</span>
+  </div>
+
+  <svg class="flightpath reveal" viewBox="0 0 1200 250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+    <path id="arc" class="fp-line" d="M70,185 C330,40 870,40 1130,185"/>
+    <circle class="fp-ring" cx="70" cy="185" r="9"/>
+    <circle class="fp-dot" cx="70" cy="185" r="3.5"/>
+    <text class="fp-label" x="70" y="222" text-anchor="middle">WORLDWIDE</text>
+    <text class="fp-sub" x="70" y="242" text-anchor="middle">Sourced</text>
+    <circle class="fp-dot" cx="1130" cy="185" r="6"/>
+    <text class="fp-label" x="1130" y="222" text-anchor="middle">FCT ABUJA</text>
+    <text class="fp-sub" x="1130" y="242" text-anchor="middle">Delivered</text>
+    <g class="plane">
+      <path d="M-13,-9 L15,0 L-13,9 L-5,0 Z"/>
+      <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" calcMode="linear">
+        <mpath href="#arc" xlink:href="#arc"/>
+      </animateMotion>
+    </g>
+  </svg>
+
+  <div class="stops">
+    <div class="stop reveal">
+      <span class="s-step">Step 01</span>
+      <svg class="s-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.5 2.6 16.5 0 18M12 3c-2.6 2.5-2.6 16.5 0 18"/></svg>
+      <h3>Sourced Abroad</h3>
+      <p>Hand-picked quality stock from trusted markets around the world.</p>
+    </div>
+    <div class="stop reveal">
+      <span class="s-step">Step 02</span>
+      <svg class="s-ic" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+      <h3>Checked &amp; Cleared</h3>
+      <p>Every package inspected and verified before it reaches the floor.</p>
+    </div>
+    <div class="stop reveal">
+      <span class="s-step">Step 03</span>
+      <svg class="s-ic" viewBox="0 0 24 24"><path d="M3 9l1.6-5h14.8L21 9M4.5 9v10h15V9M4 9h16M9.5 19v-5h5v5"/></svg>
+      <h3>On Your Street</h3>
+      <p>Ready to collect at our Abuja store — wholesale or retail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="shop">
+  <div class="sec-label reveal">
+    <h2>Collections</h2>
+    <span class="idx">01 — What We Sell</span>
+  </div>
+  <div class="cat-grid">
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">01</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></svg>
+      <h3>Home Accessories</h3>
+      <p>Decor, lighting, mirrors and finishing pieces for every room.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">02</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="14" r="3.5"/><path d="M8 6.5h3"/></svg>
+      <h3>Home Appliances</h3>
+      <p>Blenders, fans, irons, kettles, microwaves and more.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">03</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M4 13h13a0 0 0 010 0v3a4 4 0 01-4 4H8a4 4 0 01-4-4v-3zM17 13h2a2 2 0 110 4h-2M7 9V5.5M11 9V5.5M15 9V5.5"/></svg>
+      <h3>Kitchen Wares</h3>
+      <p>Cookware sets, non-stick pots, utensils and storage.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">04</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M9 3L5 6l1.5 14h11L19 6l-4-3M9 3a3 3 0 006 0M12 9v3"/></svg>
+      <h3>Men's Wear</h3>
+      <p>Shirts, trousers, native styles and accessories.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">05</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 3v3M9 6h6l4 14H5L9 6zM9 10c0 2 1.3 3.5 3 3.5s3-1.5 3-3.5"/></svg>
+      <h3>Ladies' Wear</h3>
+      <p>Gowns, tops, fabrics and styles ahead of the season.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">06</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V6a4 4 0 018 0v2"/></svg>
+      <h3>Bags</h3>
+      <p>Handbags, travel bags and backpacks built to last.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">07</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+      <h3>Gadgets</h3>
+      <p>Phones accessories, electronics and smart devices.</p>
+    </a>
+    <a class="cat reveal" href="tel:08164043196">
+      <span class="num">08</span>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8"/></svg>
+      <h3>Bulk Orders</h3>
+      <p>Trader pricing on volume across every category.</p>
+    </a>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <p class="reveal">We don't sell everything to everyone. <span>We sell the right thing, at the right price, to you.</span></p>
+</section>
+
+<!-- WHY US -->
+<div class="dark" id="why">
+  <div class="dark-inner">
+    <div class="sec-label reveal">
+      <h2>Why You Need Us</h2>
+      <span class="idx">02 — The Standard</span>
+    </div>
+    <div class="why-list">
+      <div class="why-item reveal">
+        <div class="w-num">01</div>
+        <h3>Genuine Imports</h3>
+        <p>Every item is sourced and inspected before it reaches the floor. No fakes. No compromises.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="w-num">02</div>
+        <h3>Wholesale &amp; Retail</h3>
+        <p>One piece or one hundred — pricing that comes straight from import, not from middlemen.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="w-num">03</div>
+        <h3>One Address</h3>
+        <p>Appliances, fashion, kitchen, bags and gadgets under one roof. One visit covers it all.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="w-num">04</div>
+        <h3>Built on Trust</h3>
+        <p>Our name is the guarantee. What we promise is exactly what you collect — every time.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="w-num">05</div>
+        <h3>Always New Stock</h3>
+        <p>Fresh arrivals land regularly. The latest styles, models and designs, before anyone else.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="w-num">06</div>
+        <h3>Abuja, Made Easy</h3>
+        <p>Back of Sharia Court at the Block Industry, FCT Abuja. Walk in or order by phone.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHOLESALE -->
+<section id="wholesale">
+  <div class="sec-label reveal">
+    <h2>Wholesale</h2>
+    <span class="idx">03 — For Traders</span>
+  </div>
+  <div class="ws">
+    <div class="reveal">
+      <h2>Stock your shop. Keep your margin.</h2>
+      <p>Resellers and traders get serious volume pricing across all product lines. Quality imports your customers come back for — supplied consistently.</p>
+      <a class="btn btn-solid" href="tel:08164043196">Request Trade Prices</a>
+    </div>
+    <ul class="ws-points reveal">
+      <li>Volume Pricing <span>All categories</span></li>
+      <li>Consistent Supply <span>Restocked regularly</span></li>
+      <li>Quality Control <span>Inspected imports</span></li>
+      <li>Direct Line <span>0816 404 3196</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="dark" id="contact">
+  <div class="dark-inner">
+    <div class="sec-label reveal">
+      <h2>Contact</h2>
+      <span class="idx">04 — Visit or Call</span>
+    </div>
+    <div class="contact-grid">
+      <div class="c-cell reveal">
+        <p class="c-label">Phone / WhatsApp</p>
+        <p class="c-value"><a href="tel:08164043196">0816 404 3196</a></p>
+        <p class="c-sub">Orders, prices and enquiries.</p>
+      </div>
+      <div class="c-cell reveal">
+        <p class="c-label">Location</p>
+        <p class="c-value">Back of Sharia Court</p>
+        <p class="c-sub">At the Block Industry, FCT Abuja, Nigeria.</p>
+      </div>
+      <div class="c-cell reveal">
+        <p class="c-label">Hours</p>
+        <p class="c-value">Mon — Sat<br>8:00 — 19:00</p>
+        <p class="c-sub">Sunday by appointment.</p>
+      </div>
+    </div>
+    <div class="big-call reveal">
+      <a href="tel:08164043196">0816&nbsp;404&nbsp;3196</a>
+      <p class="hint">Tap to call</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-inner">
+    <div class="f-top">
+      <div class="f-brand">
+        <a class="brand" href="#top">ONAZI'S&nbsp;IMPORT</a>
+        <p>Wholesale and retail. Home accessories, appliances, kitchen wares, men's and ladies' wear, bags, gadgets and more. FCT Abuja.</p>
+      </div>
+      <div class="f-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#shop">Collections</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#wholesale">Wholesale</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="tel:08164043196">Call</a></li>
+          <li><a href="https://wa.me/2348164043196" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#top">Instagram</a></li>
+          <li><a href="#top">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Store</h4>
+        <p class="addr">Back of Sharia Court,<br>at the Block Industry,<br>FCT Abuja, Nigeria<br><br>Mon — Sat · 8:00 — 19:00</p>
+      </div>
+    </div>
+    <div class="f-wordmark" aria-hidden="true"><span>Onazi's Import</span></div>
+    <div class="f-team">
+      <div class="team-cell">
+        <span class="t-role">Founder &amp; Director</span>
+        <span class="t-name">Prince Onazi</span>
+      </div>
+      <div class="team-cell">
+        <span class="t-role">Co-Founder</span>
+        <span class="t-name">Onazi Treasure</span>
+      </div>
+      <div class="team-cell">
+        <span class="t-role">Developer</span>
+        <span class="t-name">OJ</span>
+      </div>
+      <div class="team-cell">
+        <span class="t-role">Co-Designer</span>
+        <span class="t-name">bigsmoke001</span>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© <span id="yr">2026</span> Onazi's Import. All rights reserved.</span>
+      <a href="tel:08164043196">0816 404 3196 — FCT Abuja</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// mobile nav
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{links.classList.toggle('open');burger.classList.toggle('open')});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');burger.classList.remove('open')}));
+
+// marquee duplicate for seamless loop
+const mq=document.getElementById('mq');
+mq.innerHTML+=mq.innerHTML;
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// nav shadow on scroll
+const navEl=document.querySelector('nav');
+const onScroll=()=>navEl.classList.toggle('scrolled',window.scrollY>20);
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+// year
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
