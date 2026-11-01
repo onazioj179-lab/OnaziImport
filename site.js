@@ -9,35 +9,22 @@ function watchMedia(query, listener) {
   return media;
 }
 
-// Navigation remains usable when JavaScript is unavailable.
-const burger = document.getElementById('burger');
-const links = document.getElementById('navLinks');
-if (burger && links) {
-  document.documentElement.classList.add('nav-ready');
-  burger.hidden = false;
+// The native details menu works by itself; these are optional conveniences.
+const mobileMenu = document.getElementById('mobileMenu');
+if (mobileMenu) {
   const closeMenu = (restoreFocus = false) => {
-    links.classList.remove('open');
-    burger.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'Open menu');
-    if (restoreFocus) burger.focus();
+    mobileMenu.open = false;
+    if (restoreFocus) mobileMenu.querySelector('summary').focus();
   };
-  burger.addEventListener('click', () => {
-    const open = burger.getAttribute('aria-expanded') !== 'true';
-    links.classList.toggle('open', open);
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  });
-  links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') closeMenu(true);
+    if (event.key === 'Escape' && mobileMenu.open) closeMenu(true);
   });
   document.addEventListener('click', event => {
     if (!event.target.closest('nav')) closeMenu();
   });
-  links.addEventListener('focusout', event => {
-    if (!links.contains(event.relatedTarget) && event.relatedTarget !== burger) closeMenu();
+  mobileMenu.addEventListener('focusout', event => {
+    if (!mobileMenu.contains(event.relatedTarget)) closeMenu();
   });
   watchMedia('(min-width: 901px)', () => closeMenu());
 }
@@ -200,7 +187,11 @@ if (form) {
     draft.focus();
   });
   updateControls();
-  form.hidden = false;
+  const options = document.getElementById('enquiryOptions');
+  options.disabled = false;
+  options.hidden = false;
+  notesCount.hidden = false;
+  form.querySelector('button[type="submit"]').textContent = 'Prepare WhatsApp Enquiry';
 }
 
 // No optional tracking is installed. Both choices remember only this notice.

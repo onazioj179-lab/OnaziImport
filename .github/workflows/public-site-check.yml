@@ -22,8 +22,8 @@ jobs:
             'privacy.html'
             'cookies.html'
             'terms.html'
-            'styles.css?v=20261101-clean'
-            'site.js?v=20261101-clean'
+            'styles.css'
+            'site.js'
             'assets/fonts/archivo-latin.woff2'
             'assets/fonts/inter-latin.woff2'
           )
@@ -32,3 +32,13 @@ jobs:
             test "$status" = '200'
             printf 'PASS %s (HTTP %s)\n' "${base}${page}" "$status"
           done
+      - name: Confirm self-contained static HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          page="$RUNNER_TEMP/static-home.html"
+          curl --fail --silent --show-error --location --max-time 30 --retry 2 --output "$page" 'https://onazioj179-lab.github.io/OnaziImport/'
+          grep -q '<style id="site-styles">' "$page"
+          grep -q '<form id="enquiryForm" action="https://wa.me/2348164043196" method="get">' "$page"
+          ! grep -Eq '<script[^>]* src=|<link[^>]*rel="stylesheet"' "$page"
+          printf 'PASS static HTML: inline styles, native enquiry form, no required external scripts or stylesheet\n'

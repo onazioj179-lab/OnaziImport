@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "node tools/serve.mjs",
+    "sync": "node tools/sync-pages.mjs",
     "check": "node --check site.js && node tools/check.mjs && node --test tools/browser-compat.test.mjs"
   },
   "engines": { "node": ">=20" }
