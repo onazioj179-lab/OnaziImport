@@ -1,0 +1,34 @@
+name: Public website availability
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check public pages and assets without authentication
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://onazioj179-lab.github.io/OnaziImport/'
+          paths=(
+            ''
+            'index.html'
+            'privacy.html'
+            'cookies.html'
+            'terms.html'
+            'styles.css?v=20261101-clean'
+            'site.js?v=20261101-clean'
+            'assets/fonts/archivo-latin.woff2'
+            'assets/fonts/inter-latin.woff2'
+          )
+          for page in "${paths[@]}"; do
+            status=$(curl --fail --silent --show-error --location --max-time 30 --retry 2 --retry-delay 2 --output /dev/null --write-out '%{http_code}' "${base}${page}")
+            test "$status" = '200'
+            printf 'PASS %s (HTTP %s)\n' "${base}${page}" "$status"
+          done

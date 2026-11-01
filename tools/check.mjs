@@ -7,6 +7,9 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const pages = ['index.html', 'privacy.html', 'cookies.html', 'terms.html', '404.html'];
 const files = new Map(await Promise.all(pages.map(async page => [page, await readFile(path.join(root, page), 'utf8')])));
 for (const [page, html] of files) {
+  // Copyright and trademark punctuation are ordinary text, not UI emoji.
+  assert.doesNotMatch(html.replace(/[©®™]/g, ''), /\p{Extended_Pictographic}|[\u2190-\u21ff\ufe0f\u200d]/u, `${page}: emoji or decorative text arrow`);
+  assert.doesNotMatch(html, /(?:https?:\/\/)(?:localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(?:1[6-9]|2\d|3[01])\.)/i, `${page}: local-network URL in public page`);
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(ids.length, new Set(ids).size, `${page}: duplicate IDs`);
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${page}: expected one primary heading`);
@@ -25,6 +28,8 @@ for (const [page, html] of files) {
   }
 }
 const css = await readFile(path.join(root, 'styles.css'), 'utf8');
+const browserScript = await readFile(path.join(root, 'site.js'), 'utf8');
+assert.doesNotMatch(browserScript + css, /(?:https?:\/\/)(?:localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(?:1[6-9]|2\d|3[01])\.)/i, 'Local-network URL in public assets');
 for (const [, asset] of css.matchAll(/url\(['"]?([^'"\)]+)['"]?\)/g)) {
   await access(path.join(root, asset));
 }
