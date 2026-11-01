@@ -16,6 +16,7 @@ The preview runs at http://127.0.0.1:4173/OnaziImport/. Set `PORT` to change the
 - Collection cards select a category in the enquiry form. The form prepares a WhatsApp link; visitors review and send messages in WhatsApp themselves. There is no checkout, payment processing, live stock system, account system or website form backend.
 - The privacy notice stores only `onazi:privacy-choice` in browser local storage. Its choice is recognised for 180 days. Both choices leave optional tracking off; no analytics or advertising is installed. Footer settings reopen the notice. Browsing still works if storage or JavaScript is unavailable.
 - Motion follows the system’s reduced-motion preference and can be paused with the button above the collection marquee. Offscreen reveals are progressive enhancements; content remains visible without JavaScript.
+- Responsive layouts cover narrow phones, landscape screens, tablets and wide desktops. The mobile menu and privacy notice scroll within the available screen height; navigation and footer controls have larger touch targets on smaller screens.
 - Archivo and Inter are self-hosted Latin variable fonts. Their SIL Open Font Licenses are included under `assets/fonts/`.
 
 ## Content maintenance

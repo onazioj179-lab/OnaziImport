@@ -203,7 +203,7 @@ nav.scrolled{box-shadow:0 6px 30px rgba(0,0,0,.08)}
 
 /* ============ MOBILE POLISH ============ */
 @media(max-width:600px){
-  .hero h1 .outline{font-size:.79em;letter-spacing:-.035em;white-space:nowrap;display:inline-block}
+  .hero h1 .outline{font-size:.74em;letter-spacing:-.035em;white-space:nowrap;display:inline-block}
   .hero{padding:108px 18px 56px;min-height:auto}
   .hero h1{font-size:clamp(2.6rem,15vw,4rem)}
   .hero-sub{margin-top:40px;gap:28px}
@@ -261,6 +261,7 @@ nav:after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:var(-
 .cat-grid .cat:nth-child(4n+4){transition-delay:.18s}
 .section-intro{font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.6;max-width:420px;color:var(--grey)}
 .order-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.order-layout>*,.faq-layout>*,.ws>*,.f-top>*,.policy-layout>*{min-width:0}
 .order-steps{list-style:none;margin:36px 0}
 .order-steps li{display:flex;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
 .order-steps li>span{font-family:Archivo,sans-serif;font-size:.72rem;color:var(--grey);padding-top:4px}
@@ -291,7 +292,7 @@ details p{padding:0 30px 24px 0;font-size:.9rem;color:var(--grey);line-height:1.
 .footer-policies{display:flex;gap:20px 28px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line-dark);padding:28px 0 0;margin-top:28px;font-size:.75rem;color:#b8b8b8}
 .footer-policies a{text-decoration:none}
 .footer-policies a:hover{text-decoration:underline;text-underline-offset:4px}
-.cookie-banner{position:fixed;z-index:300;bottom:20px;left:20px;right:20px;max-width:1320px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:28px;background:white;border:1px solid #b5b5b5;box-shadow:0 10px 50px #0002;border-radius:var(--r-md);padding:22px 26px}
+.cookie-banner{position:fixed;z-index:300;bottom:20px;left:20px;right:20px;max-width:1320px;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:28px;background:white;border:1px solid #b5b5b5;box-shadow:0 10px 50px #0002;border-radius:var(--r-md);padding:22px 26px}
 .cookie-banner .eyebrow{margin-bottom:6px;color:var(--black)}
 .cookie-banner p:not(.eyebrow){font-size:.78rem;max-width:620px;color:#59595e}
 .cookie-actions{display:flex;gap:10px;flex-shrink:0}
@@ -321,6 +322,9 @@ html[data-motion="paused"] .plane{display:none}
 @media(min-width:901px){.burger{display:none!important}}
 @media(max-width:1100px){.order-layout,.faq-layout{gap:40px}.nav-links{gap:18px}.nav-links a{letter-spacing:.1em}.nav-call{padding:11px 18px}}
 @media(max-width:900px){
+  .burger{width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0}
+  .nav-links{gap:0;overscroll-behavior:contain}
+  .nav-links.open{max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto}
   .nav-links a:after{display:none}
   html:not(.nav-ready) .nav-inner{height:auto;min-height:64px;flex-wrap:wrap;padding-top:16px}
   html:not(.nav-ready) .nav-links{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;width:100%;gap:0}
@@ -338,6 +342,9 @@ html[data-motion="paused"] .plane{display:none}
   .policy-toc{position:static}
   .policy-toc ul{display:flex;gap:12px 24px;flex-wrap:wrap}
   .policy-toc li{margin:0}
+  .footer-policies a,.footer-policies .text-button,.motion-bar .text-button{display:inline-flex;align-items:center;min-height:44px}
+  .f-col li{margin-bottom:0}
+  .f-col li a{display:inline-block;padding:10px 0;min-height:44px}
 }
 @media(max-width:600px){
   .hero-meta{font-size:.6rem;gap:14px}
@@ -351,6 +358,17 @@ html[data-motion="paused"] .plane{display:none}
   .cookie-actions{gap:8px}
   .cookie-actions .btn{padding:12px 10px}
   .footer-policies{gap:16px 24px}
+}
+@media(max-width:360px){
+  .hero h1{font-size:14vw}
+  .sec-label h2{font-size:1.5rem}
+  .big-call a{font-size:clamp(1.6rem,9vw,2.2rem)}
+  .hero-cta{flex-direction:column}
+  .hero-cta .btn{width:100%;min-height:48px}
+  .brand{font-size:.9rem;letter-spacing:.12em}
+  .cookie-actions{flex-wrap:wrap}
+  .cookie-actions .btn{min-width:110px;min-height:44px}
+  .policy-hero h1{font-size:clamp(2rem,12vw,2.8rem)}
 }
 @media(prefers-reduced-motion:reduce){
   html:not([data-motion="playing"]){scroll-behavior:auto}
