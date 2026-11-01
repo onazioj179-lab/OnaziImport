@@ -40,8 +40,8 @@
 
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css">
-<script src="site.js" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261101-forms">
+<script src="site.js?v=20261101-forms" defer></script>
 <link rel="canonical" href="https://onazioj179-lab.github.io/OnaziImport/">
 
 </head>
@@ -285,15 +285,28 @@
       <p class="eyebrow">Let’s start with the essentials</p><h3>Your next find starts here.</h3>
       <p class="form-intro">Prepare an enquiry, then review and send it in WhatsApp. This is a stock and price request, with no payment or commitment.</p>
       <form id="enquiryForm" hidden>
-        <label for="category">Collection</label>
-        <select id="category" name="category" required><option value="">Choose a collection</option><option>Home Accessories</option><option>Home Appliances</option><option>Kitchen Wares</option><option>Men's Wear</option><option>Ladies' Wear</option><option>Bags</option><option>Gadgets</option><option>Bulk Orders</option></select>
-        <label for="quantity">Quantity</label><input id="quantity" name="quantity" type="number" min="1" max="10000" step="1" value="1" required inputmode="numeric">
-        <label for="notes">What are you looking for? <span>(optional)</span></label><textarea id="notes" name="notes" rows="3" maxlength="600" placeholder="Item, size, colour or model…" aria-describedby="enquiryPrivacy"></textarea>
+        <div class="form-field">
+          <label for="category">Collection <span class="field-tag">Required</span></label>
+          <div class="select-control"><select id="category" name="category" required aria-describedby="categoryHint categoryError"><option value="">Choose a collection</option><option>Home Accessories</option><option>Home Appliances</option><option>Kitchen Wares</option><option>Men's Wear</option><option>Ladies' Wear</option><option>Bags</option><option>Gadgets</option><option>Bulk Orders</option></select><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div>
+          <p class="field-hint" id="categoryHint">Choose the range you would like to ask about.</p>
+          <p class="field-error" id="categoryError" hidden>Choose a collection to continue.</p>
+        </div>
+        <div class="form-field">
+          <label for="quantity">Quantity <span class="field-tag">Required</span></label>
+          <div class="quantity-control"><button type="button" data-quantity-step="-1" aria-label="Decrease quantity" aria-controls="quantity" hidden>−</button><input id="quantity" name="quantity" type="number" min="1" max="10000" step="1" value="1" required inputmode="numeric" aria-describedby="quantityHint quantityError"><button type="button" data-quantity-step="1" aria-label="Increase quantity" aria-controls="quantity" hidden>+</button></div>
+          <p class="field-hint" id="quantityHint">Enter a whole number from 1 to 10,000.</p>
+          <p class="field-error" id="quantityError" hidden>Enter a whole number from 1 to 10,000.</p>
+        </div>
+        <div class="form-field">
+          <label for="notes">What are you looking for? <span class="field-tag">Optional</span></label>
+          <textarea id="notes" name="notes" rows="4" maxlength="600" placeholder="Tell us the item, size, colour or model…" aria-describedby="notesHint enquiryPrivacy"></textarea>
+          <div class="field-meta"><p class="field-hint" id="notesHint">Add any product details that will help us check stock.</p><span id="notesCount" class="character-count" aria-hidden="true">0 / 600</span></div>
+        </div>
         <p class="form-note" id="enquiryPrivacy">Your draft stays on this page until you open WhatsApp. Please leave out payment details and sensitive information. <a href="privacy.html">Privacy policy</a>.</p>
         <button class="btn btn-solid" type="submit">Prepare WhatsApp Enquiry ↗</button>
         <div id="enquiryResult" class="enquiry-result" role="status" hidden><p>Your draft is ready. Review it in WhatsApp before sending.</p><a id="whatsappDraft" class="inline-link" target="_blank" rel="noopener noreferrer">Open WhatsApp draft ↗</a></div>
       </form>
-      <noscript><p><a class="btn btn-solid" href="https://wa.me/2348164043196" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp ↗</a></p></noscript>
+      <p class="enquiry-fallback">Prefer to contact us directly? <a href="https://wa.me/2348164043196" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a> or <a href="tel:+2348164043196">call the store</a>.</p>
     </div>
   </div>
 </section>

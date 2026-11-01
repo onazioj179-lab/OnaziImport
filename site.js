@@ -1,5 +1,14 @@
 'use strict';
 
+// Older Safari and embedded browsers use addListener for media queries.
+function watchMedia(query, listener) {
+  if (typeof window.matchMedia !== 'function') return { matches: false };
+  const media = window.matchMedia(query);
+  if (typeof media.addEventListener === 'function') media.addEventListener('change', listener);
+  else if (typeof media.addListener === 'function') media.addListener(listener);
+  return media;
+}
+
 // Navigation remains usable when JavaScript is unavailable.
 const burger = document.getElementById('burger');
 const links = document.getElementById('navLinks');
@@ -30,10 +39,13 @@ if (burger && links) {
   links.addEventListener('focusout', event => {
     if (!links.contains(event.relatedTarget) && event.relatedTarget !== burger) closeMenu();
   });
-  window.matchMedia('(min-width: 901px)').addEventListener('change', () => closeMenu());
+  watchMedia('(min-width: 901px)', () => closeMenu());
 }
 
-const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const motionPreference = watchMedia('(prefers-reduced-motion: reduce)', event => {
+  motionPaused = event.matches;
+  applyMotionPreference();
+});
 const motionToggle = document.getElementById('motionToggle');
 const flightpath = document.querySelector('.flightpath');
 let motionPaused = motionPreference.matches;
@@ -42,7 +54,7 @@ function applyMotionPreference() {
   if (motionToggle) {
     motionToggle.textContent = motionPaused ? 'Enable motion' : 'Pause motion';
   }
-  if (flightpath?.pauseAnimations) {
+  if (flightpath && typeof flightpath.pauseAnimations === 'function') {
     if (motionPaused) flightpath.pauseAnimations();
     else flightpath.unpauseAnimations();
   }
@@ -56,11 +68,6 @@ if (motionToggle) {
     applyMotionPreference();
   });
 }
-motionPreference.addEventListener('change', event => {
-  motionPaused = event.matches;
-  applyMotionPreference();
-});
-
 const marquee = document.getElementById('mq');
 if (marquee) marquee.append(marquee.firstElementChild.cloneNode(true));
 
@@ -89,7 +96,7 @@ if ('IntersectionObserver' in window && !motionPaused) {
 const nav = document.querySelector('nav');
 let scrollPending = false;
 function updateScroll() {
-  nav?.classList.toggle('scrolled', window.scrollY > 20);
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
   const distance = document.documentElement.scrollHeight - window.innerHeight;
   document.documentElement.style.setProperty('--scroll-progress', `${distance > 0 ? Math.min(100, window.scrollY / distance * 100) : 0}%`);
   scrollPending = false;
@@ -114,27 +121,86 @@ if (form) {
   const notes = document.getElementById('notes');
   const result = document.getElementById('enquiryResult');
   const draft = document.getElementById('whatsappDraft');
+  const categoryHint = document.getElementById('categoryHint');
+  const notesHint = document.getElementById('notesHint');
+  const notesCount = document.getElementById('notesCount');
+  const quantityButtons = form.querySelectorAll('[data-quantity-step]');
+  const collectionHints = {
+    'Home Accessories': 'For example: a bedside lamp, mirror or storage basket. Add a colour or style if you have one in mind.',
+    'Home Appliances': 'Tell us the appliance, preferred brand or model, capacity and any power requirements.',
+    'Kitchen Wares': 'Tell us the cookware or utensils, material, size and number of pieces you need.',
+    "Men's Wear": 'Tell us the clothing item, size, colour and preferred style.',
+    "Ladies' Wear": 'Tell us the clothing item, size, colour, fabric or preferred style.',
+    'Bags': 'Tell us the bag type, size and colour, and whether it is for everyday use or travel.',
+    'Gadgets': 'Tell us the device or accessory and the brand or model it needs to work with.',
+    'Bulk Orders': 'List the items and quantities you need. The quantity field can show your total number of pieces.'
+  };
+  const setFieldError = field => {
+    const error = document.getElementById(`${field.id}Error`);
+    const valid = field.validity.valid;
+    if (error) error.hidden = valid;
+    if (valid) field.removeAttribute('aria-invalid');
+    else field.setAttribute('aria-invalid', 'true');
+    return valid;
+  };
+  const updateControls = () => {
+    notesCount.textContent = `${notes.value.length} / 600`;
+    const hint = collectionHints[category.value];
+    categoryHint.textContent = category.value ? `Enquiring about ${category.value.toLowerCase()}.` : 'Choose the range you would like to ask about.';
+    notesHint.textContent = hint || 'Add any product details that will help us check stock.';
+    quantityButtons.forEach(button => {
+      const value = quantity.valueAsNumber;
+      button.disabled = quantity.validity.valid && (Number(button.dataset.quantityStep) < 0 ? value <= 1 : value >= 10000);
+    });
+  };
   const clearDraft = () => {
     result.hidden = true;
     draft.removeAttribute('href');
   };
-  form.hidden = false;
+  form.noValidate = true;
+  quantityButtons.forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const current = quantity.valueAsNumber;
+      quantity.value = Number.isInteger(current) ? Math.max(1, Math.min(10000, current + Number(button.dataset.quantityStep))) : 1;
+      clearDraft();
+      updateControls();
+      setFieldError(quantity);
+    });
+  });
   document.querySelectorAll('[data-category]').forEach(link => {
     link.addEventListener('click', () => {
       category.value = link.dataset.category;
       clearDraft();
+      updateControls();
+      setFieldError(category);
     });
   });
-  form.addEventListener('input', clearDraft);
-  form.addEventListener('change', clearDraft);
+  const onEdit = event => {
+    clearDraft();
+    updateControls();
+    if (event.target.getAttribute('aria-invalid') === 'true') setFieldError(event.target);
+  };
+  form.addEventListener('input', onEdit);
+  form.addEventListener('change', onEdit);
+  [category, quantity].forEach(field => field.addEventListener('blur', () => setFieldError(field)));
   form.addEventListener('reset', clearDraft);
   form.addEventListener('submit', event => {
     event.preventDefault();
+    const categoryValid = setFieldError(category);
+    const quantityValid = setFieldError(quantity);
+    if (!categoryValid || !quantityValid) {
+      (categoryValid ? quantity : category).focus();
+      return;
+    }
     if (!form.reportValidity()) return;
     const message = ["Hello Onazi's Import, I'd like to enquire about:", `Collection: ${category.value}`, `Quantity: ${quantity.value}`, notes.value.trim() ? `Details: ${notes.value.trim()}` : '', 'Please confirm availability, price and collection or delivery options.'].filter(Boolean).join('\n');
     draft.href = `https://wa.me/2348164043196?text=${encodeURIComponent(message)}`;
     result.hidden = false;
+    draft.focus();
   });
+  updateControls();
+  form.hidden = false;
 }
 
 // No optional tracking is installed. Both choices remember only this notice.
@@ -148,7 +214,7 @@ if (cookieBanner) {
   try {
     saved = JSON.parse(localStorage.getItem(privacyKey));
   } catch { /* A visitor may block browser storage. The notice still works. */ }
-  const valid = saved?.version === 1 && ['necessary', 'accepted'].includes(saved.choice) && Number.isFinite(saved.expires) && saved.expires > Date.now();
+  const valid = saved && saved.version === 1 && ['necessary', 'accepted'].includes(saved.choice) && Number.isFinite(saved.expires) && saved.expires > Date.now();
   cookieBanner.hidden = valid;
   settingsButtons.forEach(button => {
     button.hidden = false;
@@ -165,7 +231,7 @@ if (cookieBanner) {
       } catch { /* Without storage, the choice lasts for the current page visit. */ }
       cookieBanner.hidden = true;
       if (settingsTrigger) settingsTrigger.focus();
-      else if (document.activeElement === button) document.querySelector('.brand')?.focus();
+      else if (document.activeElement === button) document.querySelector('.brand').focus();
     });
   });
 }

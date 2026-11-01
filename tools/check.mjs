@@ -14,7 +14,8 @@ for (const [page, html] of files) {
   assert.doesNotMatch(html, /<script[^>]+src="https?:|<link[^>]+href="https:\/\/fonts\./, `${page}: unexpected third-party resource`);
   for (const [, link] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     if (/^(https?:|tel:|data:)/.test(link)) continue;
-    const [target, fragment] = link.split('#');
+    const [resource, fragment] = link.split('#');
+    const target = resource.split('?')[0];
     const targetFile = target ? target.replace(/^\/OnaziImport\//, '') || 'index.html' : page;
     await access(path.join(root, targetFile));
     if (fragment) {
