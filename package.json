@@ -1,0 +1,9 @@
+{
+  "name": "onazis-import",
+  "private": true,
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "check": "node --check site.js && node tools/check.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
