@@ -28,3 +28,11 @@ Keep contact details, stock descriptions, hours, policy dates and policy text al
 Policies and the home page share `styles.css` and `site.js`. Update `sitemap.xml` when adding or removing public pages. The custom `404.html` uses the GitHub Pages project base path for its assets and navigation.
 
 When releasing shared CSS or JavaScript changes, update their `?v=` suffix consistently across HTML pages so browsers fetch the matching files instead of using an earlier cached release.
+
+Keep interface copy free of emoji and decorative Unicode arrows. Use clear text labels for links and buttons.
+
+## Public access verification
+
+The shared link is the public GitHub Pages address above. Visitors do not need an account or access to the store’s Wi-Fi. Local preview addresses are for development only and must not appear in published pages or browser assets.
+
+After deploying, run the **Public website availability** workflow from the repository’s Actions tab. It checks the home page, policy pages, scripts, styles and fonts from a GitHub-hosted runner without authentication. This verifies access outside the developer’s local network; it does not guarantee that every mobile provider or network permits GitHub Pages traffic. If a specific connection fails, retain the exact browser error to distinguish DNS, filtering and connectivity problems.
